@@ -482,7 +482,7 @@
   <delete id="deleteDistinctData">
 
     <if test="list!=null">
-      delete ICHGasEqui
+      delete from ICHGasEqui
       <where>
         id not in
         <foreach close=")" collection="list" item="listItem" open="("

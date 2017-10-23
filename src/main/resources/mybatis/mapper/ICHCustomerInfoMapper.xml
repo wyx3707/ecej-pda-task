@@ -721,7 +721,7 @@
 
     <delete id="deleteDistinctData" parameterType="java.util.List">
         <if test="list!=null">
-            delete ICHCustomerInfo
+            delete from ICHCustomerInfo
             <where>
                 id not in
                 <foreach close=")" collection="list" item="listItem" open="("

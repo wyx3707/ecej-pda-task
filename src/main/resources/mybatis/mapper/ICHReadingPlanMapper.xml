@@ -768,7 +768,7 @@
 
     <delete id="deleteDistinctData">
         <if test="list!=null">
-            delete ICHReadingPlan
+            delete from ICHReadingPlan
             <where>
                 id not in
                 <foreach close=")" collection="list" item="listItem" open="("

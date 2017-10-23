@@ -655,7 +655,7 @@
     <delete id="deleteDistinctData">
 
         <if test="list!=null">
-            delete ICHInstallInfo
+            delete from ICHInstallInfo
             <where>
                 id not in
                 <foreach close=")" collection="list" item="listItem" open="("

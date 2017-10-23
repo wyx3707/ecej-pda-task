@@ -624,7 +624,7 @@
   <delete id="deleteDistinctData">
 
     <if test="list!=null">
-      delete ICHPrice
+      delete from ICHPrice
       <where>
         id not in
         <foreach close=")" collection="list" item="listItem" open="("
