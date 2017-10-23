@@ -646,4 +646,11 @@
       yplace = #{yplace,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <delete id="deleteDistinctData">
+    delete ICHInstallInfo a where not exists (
+    select id from (SELECT max(id) id FROM ICHInstallInfo  GROUP BY anlage) b
+    where b.id=a.id
+    );
+  </delete>
 </mapper>

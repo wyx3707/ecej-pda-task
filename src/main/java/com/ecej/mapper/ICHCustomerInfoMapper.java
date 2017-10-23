@@ -93,4 +93,6 @@ public interface ICHCustomerInfoMapper {
      * @mbg.generated
      */
     int updateByPrimaryKey(ICHCustomerInfo record);
+
+    void deleteDistinctData();
 }

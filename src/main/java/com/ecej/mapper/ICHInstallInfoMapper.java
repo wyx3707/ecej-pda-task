@@ -93,4 +93,6 @@ public interface ICHInstallInfoMapper {
      * @mbg.generated
      */
     int updateByPrimaryKey(ICHInstallInfo record);
+
+    void deleteDistinctData();
 }

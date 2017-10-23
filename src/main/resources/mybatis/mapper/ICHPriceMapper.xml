@@ -616,4 +616,11 @@
       zzyue = #{zzyue,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <delete id="deleteDistinctData">
+    delete ICHPrice a where not exists (
+    select id from (SELECT max(id) id FROM ICHPrice  GROUP BY anlage) b
+    where b.id=a.id
+    );
+  </delete>
 </mapper>

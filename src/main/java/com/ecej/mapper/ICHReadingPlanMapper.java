@@ -93,4 +93,6 @@ public interface ICHReadingPlanMapper {
      * @mbg.generated
      */
     int updateByPrimaryKey(ICHReadingPlan record);
+
+    void deleteDistinctData();
 }

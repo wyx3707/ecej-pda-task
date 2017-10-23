@@ -712,4 +712,12 @@
       vstelle = #{vstelle,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <delete id="deleteDistinctData">
+     delete ICHCustomerInfo a where not exists (
+     select id from (SELECT max(id) id FROM ICHCustomerInfo  GROUP BY anlage) b
+     where b.id=a.id
+     );
+  </delete>
+
 </mapper>

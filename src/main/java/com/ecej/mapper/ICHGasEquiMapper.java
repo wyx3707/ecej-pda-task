@@ -93,4 +93,6 @@ public interface ICHGasEquiMapper {
      * @mbg.generated
      */
     int updateByPrimaryKey(ICHGasEqui record);
+
+    void deleteDistinctData();
 }

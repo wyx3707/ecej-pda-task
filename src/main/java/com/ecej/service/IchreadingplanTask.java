@@ -425,5 +425,25 @@ public class IchreadingplanTask {
         }
         if (func == null)
             return;
+
+        deleteDistinctData();
+    }
+
+    /**
+     * 删除重复数据
+     */
+    public void deleteDistinctData() {
+        System.out.println("删除重复数据 -- 开始");
+        double start_millis = System.currentTimeMillis();
+        ichCustomerInfoMapper.deleteDistinctData();
+        ichGasEquiMapper.deleteDistinctData();
+        ichInstallInfoMapper.deleteDistinctData();
+        ichReadingPlanMapper.deleteDistinctData();
+        ichPriceMapper.deleteDistinctData();
+        double end_millis = System.currentTimeMillis();
+        System.out.println("<<<<<<<<< SAP抄表计划定时作业数据同步,删除重复数据，总耗时【 "
+                + (end_millis - start_millis) / 1000 + " 秒】 >>>>>>>>>");
+        System.out.println("删除重复数据 -- 结束");
+
     }
 }

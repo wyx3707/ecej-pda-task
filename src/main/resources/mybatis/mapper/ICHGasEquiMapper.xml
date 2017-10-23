@@ -474,4 +474,11 @@
       yxatg = #{yxatg,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <delete id="deleteDistinctData">
+    delete ICHGasEqui a where not exists (
+    select id from (SELECT max(id) id FROM ICHGasEqui  GROUP BY equnr) b
+    where b.id=a.id
+    );
+  </delete>
+
 </mapper>

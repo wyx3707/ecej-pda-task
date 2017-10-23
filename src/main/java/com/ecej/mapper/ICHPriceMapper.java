@@ -93,4 +93,6 @@ public interface ICHPriceMapper {
      * @mbg.generated
      */
     int updateByPrimaryKey(ICHPrice record);
+
+    void deleteDistinctData();
 }
