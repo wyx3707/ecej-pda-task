@@ -1,0 +1,175 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.ecej</groupId>
+    <artifactId>ecej-pda-task</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <parent>
+        <groupId>com.nove</groupId>
+        <artifactId>ecej-nove</artifactId>
+        <version>1.3.1.RELEASE</version>
+    </parent>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>Snapshot Repository</name>
+            <url>http://10.4.89.197:8083/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <!-- base -->
+                <ecej.base.datasource.url>jdbc:mysql://10.38.96.163:3306/ennewplatform?useunicode=true&amp;characterencoding=utf-8</ecej.base.datasource.url>
+                <ecej.base.datasource.username>employeeapp</ecej.base.datasource.username>
+                <ecej.base.datasource.password>N4mZPXz3e6Z7Vrsc</ecej.base.datasource.password>
+                <!--CCS SAP信息 -->
+                <ecej.sap.isgroup>1</ecej.sap.isgroup>
+                <ecej.sap.ashost></ecej.sap.ashost>
+                <ecej.sap.sysnr>23</ecej.sap.sysnr>
+                <ecej.sap.client>800</ecej.sap.client>
+                <ecej.sap.user>RFCENNEW1</ecej.sap.user>
+                <ecej.sap.passwd>RFCENNEW1</ecej.sap.passwd>
+                <ecej.sap.mshost>CNLFKUX015.xinaogroup.com</ecej.sap.mshost>
+                <ecej.sap.r3name>CP1</ecej.sap.r3name>
+                <ecej.sap.group>CCS</ecej.sap.group>
+            </properties>
+
+        </profile>
+
+        <profile>
+            <id>test</id>
+            <properties>
+                <!-- base -->
+                <ecej.base.datasource.url>jdbc:mysql://10.38.96.163:3306/ennewplatform?useunicode=true&amp;characterencoding=utf-8</ecej.base.datasource.url>
+                <ecej.base.datasource.username>employeeapp</ecej.base.datasource.username>
+                <ecej.base.datasource.password>N4mZPXz3e6Z7Vrsc</ecej.base.datasource.password>
+                <!--CCS SAP信息 -->
+                <ecej.sap.isgroup>0</ecej.sap.isgroup>
+                <ecej.sap.ashost>10.0.146.139</ecej.sap.ashost>
+                <ecej.sap.sysnr>00</ecej.sap.sysnr>
+                <ecej.sap.client>810</ecej.sap.client>
+                <ecej.sap.user>RFCENNEW1</ecej.sap.user>
+                <ecej.sap.passwd>RFCENNEW1</ecej.sap.passwd>
+                <ecej.sap.mshost></ecej.sap.mshost>
+                <ecej.sap.r3name>CP1</ecej.sap.r3name>
+                <ecej.sap.group>CCS</ecej.sap.group>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+
+    </profiles>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <!--druid -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+        </dependency>
+        <!-- mybatis 分页插件 -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.nove</groupId>
+            <artifactId>ecej-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.pda.jco</groupId>
+            <artifactId>pda</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-legacy</artifactId>
+            <version>1.0.2.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>4.1.4.RELEASE</version>
+        </dependency>
+
+    </dependencies>
+    <build>
+        <finalName>ecej-meterreadtask</finalName>
+        <resources>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </resource>
+        </resources>
+        <plugins>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <executable>true</executable>
+                    <jvmArguments>-Dfile.encoding=UTF-8</jvmArguments>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                    <testFailureIgnore>true</testFailureIgnore>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.5</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.ecej.mybatis.generator</groupId>
+                        <artifactId>ecej-mybatis-generator</artifactId>
+                        <version>1.0.0.RELEASE</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>5.1.36</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <verbose>true</verbose>
+                    <overwrite>true</overwrite>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
