@@ -94,5 +94,8 @@ public interface ICHPriceMapper {
      */
     int updateByPrimaryKey(ICHPrice record);
 
-    void deleteDistinctData();
+    void deleteDistinctData(List<Integer> list);
+
+    List<Integer> selectDistinctData();
+
 }

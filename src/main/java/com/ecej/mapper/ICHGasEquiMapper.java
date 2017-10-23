@@ -94,5 +94,8 @@ public interface ICHGasEquiMapper {
      */
     int updateByPrimaryKey(ICHGasEqui record);
 
-    void deleteDistinctData();
+    void deleteDistinctData(List<Integer> list);
+
+    List<Integer> selectDistinctData();
+
 }

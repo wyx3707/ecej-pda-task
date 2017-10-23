@@ -474,11 +474,23 @@
       yxatg = #{yxatg,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectDistinctData" resultType="java.util.List">
+    SELECT max(id) id FROM ICHGasEqui  GROUP BY equnr
+  </select>
+
   <delete id="deleteDistinctData">
-    delete ICHGasEqui a where not exists (
-    select id from (SELECT max(id) id FROM ICHGasEqui  GROUP BY equnr) b
-    where b.id=a.id
-    );
+
+    <if test="list!=null">
+      delete ICHGasEqui
+      <where>
+        id not in
+        <foreach close=")" collection="list" item="listItem" open="("
+                 separator=",">
+          #{listItem}
+        </foreach>
+      </where>
+    </if>
   </delete>
 
 </mapper>

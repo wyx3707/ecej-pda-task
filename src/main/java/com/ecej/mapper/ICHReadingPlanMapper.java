@@ -94,5 +94,8 @@ public interface ICHReadingPlanMapper {
      */
     int updateByPrimaryKey(ICHReadingPlan record);
 
-    void deleteDistinctData();
+    void deleteDistinctData(List<Integer> list);
+
+    List<Integer> selectDistinctData();
+
 }

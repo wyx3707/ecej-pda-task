@@ -435,11 +435,26 @@ public class IchreadingplanTask {
     public void deleteDistinctData() {
         System.out.println("删除重复数据 -- 开始");
         double start_millis = System.currentTimeMillis();
-        ichCustomerInfoMapper.deleteDistinctData();
-        ichGasEquiMapper.deleteDistinctData();
-        ichInstallInfoMapper.deleteDistinctData();
-        ichReadingPlanMapper.deleteDistinctData();
-        ichPriceMapper.deleteDistinctData();
+        List<Integer> integers = ichCustomerInfoMapper.selectDistinctData();
+        if (integers.size() > 0) {
+            ichCustomerInfoMapper.deleteDistinctData(integers);
+        }
+        List<Integer> integers1 = ichGasEquiMapper.selectDistinctData();
+        if (integers1.size() > 0) {
+            ichGasEquiMapper.deleteDistinctData(integers1);
+        }
+        List<Integer> integers2 = ichInstallInfoMapper.selectDistinctData();
+        if (integers2.size() > 0) {
+            ichInstallInfoMapper.deleteDistinctData(integers2);
+        }
+        List<Integer> integers3 = ichReadingPlanMapper.selectDistinctData();
+        if (integers3.size() > 0) {
+            ichReadingPlanMapper.deleteDistinctData(integers3);
+        }
+        List<Integer> integers4 = ichPriceMapper.selectDistinctData();
+        if (integers4.size() > 0) {
+            ichPriceMapper.deleteDistinctData(integers4);
+        }
         double end_millis = System.currentTimeMillis();
         System.out.println("<<<<<<<<< SAP抄表计划定时作业数据同步,删除重复数据，总耗时【 "
                 + (end_millis - start_millis) / 1000 + " 秒】 >>>>>>>>>");

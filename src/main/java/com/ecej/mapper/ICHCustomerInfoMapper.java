@@ -94,5 +94,7 @@ public interface ICHCustomerInfoMapper {
      */
     int updateByPrimaryKey(ICHCustomerInfo record);
 
-    void deleteDistinctData();
+    void deleteDistinctData(List<Integer> list);
+
+    List<Integer> selectDistinctData();
 }

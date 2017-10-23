@@ -617,10 +617,21 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
+  <select id="selectDistinctData" resultType="java.util.List">
+    SELECT max(id) id FROM ICHPrice  GROUP BY anlage
+  </select>
+
   <delete id="deleteDistinctData">
-    delete ICHPrice a where not exists (
-    select id from (SELECT max(id) id FROM ICHPrice  GROUP BY anlage) b
-    where b.id=a.id
-    );
+
+    <if test="list!=null">
+      delete ICHPrice
+      <where>
+        id not in
+        <foreach close=")" collection="list" item="listItem" open="("
+                 separator=",">
+          #{listItem}
+        </foreach>
+      </where>
+    </if>
   </delete>
 </mapper>
