@@ -8,4 +8,5 @@ package com.ecej.config;
  * @Version 1.0
  */
 public class TestGitConfiguration {
+    private String name;
 }
