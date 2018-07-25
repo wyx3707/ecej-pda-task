@@ -10,4 +10,6 @@ package com.ecej.config;
 public class TestGitConfiguration {
     private String name;
     private int age;
+
+    private String address;
 }
